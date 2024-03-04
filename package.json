@@ -8,12 +8,24 @@
     "lib",
     "dist"
   ],
+  "contributors": [
+    "Xeu <i@xeu.life>"
+  ],
+  "homepage": "https://github.com/ThankRain/koishi-mail-extractor",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThankRain/koishi-mail-extractor.git"
+  },
   "license": "MIT",
   "keywords": [
-    "chatbot",
+    "mail",
     "koishi",
     "plugin"
   ],
+  "scripts": {
+    "build": "atsc -b",
+    "pub": "npm publish"
+  },
   "peerDependencies": {
     "koishi": "^4.17.1"
   }
