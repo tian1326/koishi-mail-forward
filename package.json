@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-mail-extractor",
-  "description": "监听邮件并选择性的提取关键邮件转发",
-  "version": "0.0.1",
+  "description": "监听邮件并提取验证码转发",
+  "version": "0.0.2",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
