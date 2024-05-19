@@ -43,6 +43,7 @@ export const Config: Schema<Config> = Schema.object({
 })
 
 export function apply(ctx: Context, config: Config) {
+  var lastCode = ''
   let logger = ctx.logger(name);
   logger.info(`可用的邮件地址列表：${ctx.platform("mail").bots.map(bot => `${bot.selfId}`).join(", ")}`)
   let mails = config.mails;
@@ -57,10 +58,9 @@ export function apply(ctx: Context, config: Config) {
   let if_continue = config.continue;
   for (let mail of mails) {
     ctx.platform("mail").self(mail).on('message', (session) => {
-      logger.info(`${session.platform},${session.channelId} => ${session.content}`)
+      logger.info(`${session.platform},${session.channelId} => ${mail} \n ${session.content}`)
       let content = session.content;
       for (let pattern of patterns) {
-
         // 匹配关键字
         if (pattern.keywords.length > 0) {
           if (pattern.keywords.find(keyword => content.includes(keyword)) == null) {
@@ -76,6 +76,8 @@ export function apply(ctx: Context, config: Config) {
             output = output.replaceAll(`$${i}`, str)
           })
           output = output.replaceAll("{content}", content)
+          if (output == lastCode) return;
+          lastCode = output;
           let bot = ctx.bots.find(bot => bot.platform == platform && bot.selfId == sid);
           if (bot != null) {
             seeisonIds.forEach(seeisonId => {
