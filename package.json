@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-mail-extractor",
   "description": "监听邮件并提取验证码转发",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -28,5 +28,8 @@
   },
   "peerDependencies": {
     "koishi": "^4.17.1"
+  },
+  "dependencies": {
+    "atsc": "^2.0.1"
   }
 }
